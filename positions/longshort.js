@@ -64,9 +64,17 @@ async function getLongShort(ticker, debug=true){
 }
 
 
-async function checktickers(){
+async function checktickers(usd=false){
     const tickers = await getPairs()
     for (let ticker of tickers){
+        if(usd){
+            if(!(ticker[ticker.length-1] == "D")){
+
+                continue
+
+            }
+
+        }
 
         const longShort = await getLongShort('t'+ticker, false)
         if(longShort < 0.8){
@@ -75,7 +83,10 @@ async function checktickers(){
     }
 }
 
-checktickers()
+
+//getLongShort("tADAUST")
+
+checktickers(true)
 
 
 
