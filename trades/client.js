@@ -7,12 +7,12 @@ client.connect(59898, process.argv[2], () => {
     console.log('Connected to server');
 });
 client.on('data', (data) => {
-    if(tradeRequest){
+    if (tradeRequest) {
         console.log(data.toArray)
-        for (const trade in data){
+        for (const trade in data) {
             //console.log(trade[1])
         }
-    }else{
+    } else {
         console.log(data.toArray);
     }
 
@@ -21,13 +21,13 @@ client.on('end', (data) => {
     console.log("DISCONNECT");
 });
 
-const rl = readline.createInterface({ input: process.stdin });
+const rl = readline.createInterface({input: process.stdin});
 rl.on('line', (line) => {
     client.write(`${line}`);
-    if(line == "getTrades"){
+    if (line == "getTrades") {
         tradeRequest = true
     }
-    if(line == "close"){
+    if (line == "close") {
         client.end();
     }
 });
