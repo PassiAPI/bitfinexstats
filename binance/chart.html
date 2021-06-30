@@ -1,0 +1,99 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+
+    async function get(start) {
+        try {
+
+            const pathParams = 'fundingRate' // Change these based on relevant path params
+            const queryParams = 'symbol=BTCUSDT&limit=1000&startTime=' + start // Change these based on relevant query params
+            const req = await fetch(`${url}/${pathParams}?${queryParams}`)
+            const response = await req.json()
+            console.log(response)
+            return (response)
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    async function doit() {
+        var start = 1
+
+        response = await get(start)
+        start = await ((response[response.length - 1])['fundingTime'])
+        await console.log(start)
+        for (i = 0; i < response.length; i++) {
+            await dat.push((response[i])['fundingRate'])
+        }
+        response = await get(start)
+        await console.log((response[response.length - 1])['fundingTime'])
+        for (i = 0; i < response.length; i++) {
+            await dat.push((response[i])['fundingRate'])
+        }
+        return
+
+    }
+
+    const url = 'https://www.binance.com/fapi/v1'
+
+    async function getFunding() {
+
+        for (i = 0; i < 2000; i++) {
+            await lab.push(i)
+
+        }
+
+        doit()
+        return
+
+    }
+
+    var lab = []
+    var dat = []
+
+    function main() {
+
+        getFunding()
+
+        console.log(lab)
+        console.log(dat)
+
+
+
+        const labels = lab
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: dat,
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data,
+            options: {}
+        };
+
+
+
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+
+
+    }
+
+    main()
+
+
+</script>

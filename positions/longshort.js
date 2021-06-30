@@ -83,7 +83,7 @@ async function checktickers(usd = false) {
 }
 
 
-//getLongShort("tADAUST")
+getLongShort("tBTCUSD")
 
 checktickers(true)
 
