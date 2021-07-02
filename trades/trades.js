@@ -2,7 +2,7 @@ const fetch = require('node-fetch')
 const url = 'https://api-pub.bitfinex.com/v2/'
 
 const pathParams = 'trades/tBTCUSD/hist' // Change these based on preferred pairs
-const queryParams = 'limit=9000&sort=-1' // Change these based on relevant query params
+const queryParams = 'limit=9999&sort=-1&end=1624536000000' // Change these based on relevant query params
 
 const mysql = require('mysql');
 const con = mysql.createConnection({
