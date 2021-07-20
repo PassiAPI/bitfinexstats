@@ -71,17 +71,28 @@ const url = 'https://www.binance.com/fapi/v1'
 async function createData() {
     var start = 1
 
-    response = await getFunding(start)
-    start = await ((response[response.length - 1])['fundingTime'])
-    await console.log(start)
-    for (i = 0; i < response.length; i++) {
-        await dat.push((response[i])['fundingRate'])
+
+    for (let e=0; e<3; e++){
+        response = await getFunding(start)
+        start = await ((response[response.length - 1])['fundingTime'])
+        await console.log(start)
+        for (i = 0; i < response.length; i++) {
+            await dat.push((response[i])['fundingRate'])
+        }
+        console.log("done")
     }
+
+
+/*
     response = await getFunding(start)
     await console.log((response[response.length - 1])['fundingTime'])
     for (i = 0; i < response.length; i++) {
         await dat.push((response[i])['fundingRate'])
     }
+
+
+ */
+
 }
 
 
