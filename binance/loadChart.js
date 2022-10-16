@@ -72,7 +72,7 @@ async function createData() {
     var start = 1
 
 
-    for (let e=0; e<3; e++){
+    for (let e=0; e<4; e++){
         response = await getFunding(start)
         start = await ((response[response.length - 1])['fundingTime'])
         await console.log(start)
